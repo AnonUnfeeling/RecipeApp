@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".activityies.ListActivity"/>
         <activity android:name=".activityies.AdminActivity"/>
+        <activity android:name=".activityies.RecipeActivity"/>
     </application>
 
 </manifest>

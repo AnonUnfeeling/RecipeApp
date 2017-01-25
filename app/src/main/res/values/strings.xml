@@ -3,9 +3,4 @@
     <string name="brand">Brand</string>
     <string name="food_category">Food category</string>
     <string name="time_range">Time range</string>
-    <string-array name="types">
-        <item>Food Category</item>
-        <item>Time range</item>
-        <item>Brand</item>
-    </string-array>
 </resources>

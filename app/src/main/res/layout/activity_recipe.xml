@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#defaff"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#defaff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,35 +10,39 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/brandEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/listview_margin"
-            android:hint="Brand" />
+            android:hint="Enter brand"
+            android:textColor="@android:color/black" />
 
-        <EditText
+        <TextView
             android:id="@+id/foodCategoryEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/listview_margin"
-            android:hint="Food category" />
+            android:hint="Food category"
+            android:textColor="@android:color/black" />
 
-        <EditText
+        <TextView
             android:id="@+id/timeEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/listview_margin"
-            android:hint="Time" />
+            android:hint="Time"
+            android:textColor="@android:color/black" />
 
-        <EditText
+        <TextView
             android:id="@+id/foodEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/listview_margin"
-            android:hint="Food" />
+            android:hint="Food"
+            android:textColor="@android:color/black" />
 
-        <EditText
+        <TextView
             android:id="@+id/ingredientsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,9 +50,9 @@
             android:gravity="top"
             android:hint="Ingredients"
             android:inputType="textMultiLine"
-            android:minLines="5" />
+            android:textColor="@android:color/black" />
 
-        <EditText
+        <TextView
             android:id="@+id/methodsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,14 +60,7 @@
             android:gravity="top"
             android:hint="Methods"
             android:inputType="textMultiLine"
-            android:minLines="5" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:onClick="saveButton"
-            android:text="Save" />
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
 </ScrollView>
