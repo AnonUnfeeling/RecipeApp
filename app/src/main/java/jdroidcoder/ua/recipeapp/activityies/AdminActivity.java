@@ -97,12 +97,17 @@ public class AdminActivity extends AppCompatActivity {
                 }
                 EditText foodCategory = (EditText) findViewById(R.id.foodCategoryEditText);
                 try {
-                    String cat = "";
-                    for (int i = 100; i < recipeModel.getFoodCategory().length - 1; i++) {
-                        cat += i + ". " + recipeModel.getFoodCategory()[i] + "\n";
+                    String[] categoies = recipeModel.getFoodCategory();
+                    foodCategory.setText(categoies[0]);
+                    for (int i = 1; i < categoies.length; i++) {
+                        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.addCategoryLayout);
+                        EditText editText = new EditText(this);
+                        editText.setId(idCategory);
+                        editText.setText(categoies[i]);
+                        idCategory++;
+                        editText.setLayoutParams((findViewById(R.id.foodCategoryEditText)).getLayoutParams());
+                        linearLayout.addView(editText);
                     }
-                    cat += recipeModel.getIngredients()[recipeModel.getIngredients().length];
-                    foodCategory.setText(cat);
                 } catch (Exception e) {
                 }
                 EditText time = (EditText) findViewById(R.id.timeEditText);
@@ -117,28 +122,48 @@ public class AdminActivity extends AppCompatActivity {
                 }
                 EditText ingrs = (EditText) findViewById(R.id.ingredientsEditText);
                 try {
-                    String ings = "";
-                    for (int i = 100; i < recipeModel.getIngredients().length - 1; i++) {
-                        ings += i + ". " + recipeModel.getIngredients()[i] + "\n";
+                    String[] ings = recipeModel.getIngredients();
+                    ingrs.setText(ings[0]);
+                    for (int i = 1; i < ings.length; i++) {
+                        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
+                        EditText editText = new EditText(this);
+                        editText.setId(idIngr);
+                        editText.setText(ings[i]);
+                        idIngr++;
+                        editText.setLayoutParams((findViewById(R.id.ingredientsEditText)).getLayoutParams());
+                        linearLayout.addView(editText);
                     }
-                    ings += recipeModel.getIngredients()[recipeModel.getIngredients().length];
-                    ingrs.setText(ings);
                 } catch (Exception e) {
                 }
                 EditText methods = (EditText) findViewById(R.id.methodsEditText);
                 try {
-                    String mtds = "";
-                    for (int i = 0; i < recipeModel.getMethods().length - 1; i++) {
-                        mtds += i + ". " + recipeModel.getMethods()[i] + "\n";
+                    String[] mtds = recipeModel.getMethods();
+                    methods.setText(mtds[0]);
+                    for (int i = 1; i < mtds.length; i++) {
+                        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.addMethodsLayout);
+                        EditText editText = new EditText(this);
+                        editText.setId(idMerhods);
+                        editText.setText(mtds[i]);
+                        idMerhods++;
+                        editText.setLayoutParams((findViewById(R.id.methodsEditText)).getLayoutParams());
+                        linearLayout.addView(editText);
                     }
-                    mtds += recipeModel.getMethods()[recipeModel.getMethods().length];
-                    methods.setText(mtds);
                 } catch (Exception e) {
                 }
                 try {
-                    byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
-                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                    imageView.setImageBitmap(decodedByte);
+                    if (!recipeModel.getImage().equals("")) {
+                        DisplayMetrics displayMetrics = new DisplayMetrics();
+                        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                        int width = displayMetrics.widthPixels;
+                        int height = displayMetrics.heightPixels;
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) (width * 0.4f),
+                                (int) (height * 0.4f));
+                        imageView.setLayoutParams(layoutParams);
+                        imageView.setBackgroundResource(0);
+                        byte[] decodedString = Base64.decode(recipeModel.getImage(), Base64.DEFAULT);
+                        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                        imageView.setImageBitmap(decodedByte);
+                    }
                 } catch (Exception e) {
                 }
             } else {
@@ -176,6 +201,7 @@ public class AdminActivity extends AppCompatActivity {
                     models.remove(i);
                 }
             }
+            encodedImage = recipeModel.getImage();
         }
         String[] methods = new String[idMerhods + 1];
         methods[0] = ((EditText) findViewById(R.id.methodsEditText)).getText().toString();
@@ -187,7 +213,7 @@ public class AdminActivity extends AppCompatActivity {
         }
         int size = idIngr - 100;
         int counter = 0;
-        String[] ingrs = new String[size+1];
+        String[] ingrs = new String[size + 1];
         ingrs[counter] = ((EditText) findViewById(R.id.ingredientsEditText)).getText().toString();
         if (idIngr != 0) {
             for (int i = 100; i < idIngr; i++) {
@@ -197,7 +223,7 @@ public class AdminActivity extends AppCompatActivity {
         }
         int sizeCategory = idCategory - 1000;
         int counterCategory = 0;
-        String[] categoies = new String[sizeCategory+1];
+        String[] categoies = new String[sizeCategory + 1];
         categoies[counterCategory] = ((EditText) findViewById(R.id.foodCategoryEditText)).getText().toString();
         if (idIngr != 0) {
             for (int i = 1000; i < idCategory; i++) {
@@ -221,6 +247,12 @@ public class AdminActivity extends AppCompatActivity {
         root.updateChildren(map);
 
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
+        if(isEdit){
+            startActivity(new Intent(AdminActivity.this, RecipeActivity.class).putExtra("recipe", recipeModel));
+            finish();
+        }else {
+            finish();
+        }
     }
 
     public void loadImage(View view) {
@@ -281,7 +313,7 @@ public class AdminActivity extends AppCompatActivity {
         EditText editText = new EditText(this);
         editText.setId(idCategory);
         idCategory++;
-        editText.setLayoutParams((findViewById(R.id.ingredientsEditText)).getLayoutParams());
+        editText.setLayoutParams((findViewById(R.id.foodCategoryEditText)).getLayoutParams());
         linearLayout.addView(editText);
     }
 }

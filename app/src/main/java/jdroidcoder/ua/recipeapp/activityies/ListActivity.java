@@ -84,14 +84,17 @@ public class ListActivity extends AppCompatActivity {
                                 startActivity(new Intent(ListActivity.this, RecipeisActivity.class)
                                         .putExtra("what","times")
                                         .putExtra("param", tempPoint.get(position)).putExtra("data",models));
+                                finish();
                             } else if ("category".equals(howLoad)) {
                                 startActivity(new Intent(ListActivity.this, RecipeisActivity.class)
                                         .putExtra("what","category")
                                         .putExtra("param", tempPoint.get(position)).putExtra("data",models));
+                                finish();
                             } else if ("brands".equals(howLoad)) {
                                 startActivity(new Intent(ListActivity.this, RecipeisActivity.class)
                                         .putExtra("what","brands")
                                         .putExtra("param", tempPoint.get(position)).putExtra("data",models));
+                                finish();
                             }
                         }
                     });

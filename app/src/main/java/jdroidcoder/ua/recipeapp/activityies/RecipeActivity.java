@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,13 +58,12 @@ public class RecipeActivity extends AppCompatActivity {
         try {
             if (!recipeModel.getFoodCategory().equals("")) {
                 String cat = "";
-                for (int i = 0; i < recipeModel.getIngredients().length; i++) {
-                    if (!recipeModel.getIngredients()[i].equals(""))
-                        cat += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
+                for (int i = 0; i < recipeModel.getFoodCategory().length; i++) {
+                    if (!recipeModel.getFoodCategory()[i].equals(""))
+                        cat += (i + 1) + ". " + recipeModel.getFoodCategory()[i] + "\n";
                 }
                 foodCategory.setText(cat);
-            }
-            else throw new Exception();
+            } else throw new Exception();
         } catch (Exception e) {
             foodCategory.setVisibility(View.GONE);
         }
@@ -88,7 +89,7 @@ public class RecipeActivity extends AppCompatActivity {
                 String ings = "";
                 for (int i = 0; i < recipeModel.getIngredients().length; i++) {
                     if (!recipeModel.getIngredients()[i].equals(""))
-                    ings += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
+                        ings += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
                 }
                 ingrs.setText(ings);
             } else throw new Exception();
@@ -112,6 +113,14 @@ public class RecipeActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         try {
             if (!recipeModel.getImage().equals("")) {
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                int width = displayMetrics.widthPixels;
+                int height = displayMetrics.heightPixels;
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) (width * 0.4f),
+                        (int) (height * 0.4f));
+                imageView.setLayoutParams(layoutParams);
+                imageView.setBackgroundResource(0);
                 byte[] decodedString = Base64.decode(recipeModel.getImage(), Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 imageView.setImageBitmap(decodedByte);
@@ -144,6 +153,7 @@ public class RecipeActivity extends AppCompatActivity {
                     if (codeEditText.getText().toString().equals("admin123admin")) {
                         startActivity(new Intent(RecipeActivity.this, AdminActivity.class).putExtra("recipe", recipeModel));
                         alertDialog.dismiss();
+                        finish();
                     } else {
                         Toast.makeText(RecipeActivity.this, "Code in not correct", Toast.LENGTH_LONG).show();
                     }
