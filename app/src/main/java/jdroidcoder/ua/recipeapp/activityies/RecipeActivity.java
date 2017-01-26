@@ -1,16 +1,20 @@
 package jdroidcoder.ua.recipeapp.activityies;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,7 @@ import jdroidcoder.ua.recipeapp.models.RecipeModel;
 
 public class RecipeActivity extends AppCompatActivity {
     private RecipeModel recipeModel;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,10 +44,24 @@ public class RecipeActivity extends AppCompatActivity {
         } catch (Exception e) {
             brand.setVisibility(View.GONE);
         }
+        TextView name = (TextView) findViewById(R.id.nameEditText);
+        try {
+            if (!recipeModel.getName().equals(""))
+                name.setText(recipeModel.getName());
+            else throw new Exception();
+        } catch (Exception e) {
+            name.setVisibility(View.GONE);
+        }
         TextView foodCategory = (TextView) findViewById(R.id.foodCategoryEditText);
         try {
-            if (!recipeModel.getFoodCategory().equals(""))
-                foodCategory.setText(recipeModel.getFoodCategory());
+            if (!recipeModel.getFoodCategory().equals("")) {
+                String cat = "";
+                for (int i = 0; i < recipeModel.getIngredients().length; i++) {
+                    if (!recipeModel.getIngredients()[i].equals(""))
+                        cat += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
+                }
+                foodCategory.setText(cat);
+            }
             else throw new Exception();
         } catch (Exception e) {
             foodCategory.setVisibility(View.GONE);
@@ -65,19 +84,40 @@ public class RecipeActivity extends AppCompatActivity {
         }
         TextView ingrs = (TextView) findViewById(R.id.ingredientsEditText);
         try {
-            if (!recipeModel.getIngredients().equals(""))
-                ingrs.setText(recipeModel.getIngredients());
-            else throw new Exception();
+            if (recipeModel.getIngredients().length != 0) {
+                String ings = "";
+                for (int i = 0; i < recipeModel.getIngredients().length; i++) {
+                    if (!recipeModel.getIngredients()[i].equals(""))
+                    ings += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
+                }
+                ingrs.setText(ings);
+            } else throw new Exception();
         } catch (Exception e) {
+            System.out.println("ing error" + e.getMessage());
             ingrs.setVisibility(View.GONE);
         }
         TextView methods = (TextView) findViewById(R.id.methodsEditText);
         try {
-            if (!recipeModel.getMethods().equals(""))
-                methods.setText(recipeModel.getMethods());
-            else throw new Exception();
+            if (recipeModel.getMethods().length != 0) {
+                String mtds = "";
+                for (int i = 0; i < recipeModel.getMethods().length; i++) {
+                    if (!recipeModel.getMethods()[i].equals(""))
+                        mtds += (i + 1) + ". " + recipeModel.getMethods()[i] + "\n";
+                }
+                methods.setText(mtds);
+            } else throw new Exception();
         } catch (Exception e) {
             methods.setVisibility(View.GONE);
+        }
+        imageView = (ImageView) findViewById(R.id.imageView);
+        try {
+            if (!recipeModel.getImage().equals("")) {
+                byte[] decodedString = Base64.decode(recipeModel.getImage(), Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageView.setImageBitmap(decodedByte);
+            } else throw new Exception();
+        } catch (Exception e) {
+            imageView.setVisibility(View.GONE);
         }
     }
 

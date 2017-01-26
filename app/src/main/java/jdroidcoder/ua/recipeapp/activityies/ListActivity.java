@@ -37,7 +37,7 @@ public class ListActivity extends AppCompatActivity {
     private ListView listView;
     private ProgressDialog progressDialog;
     private String howLoad = "";
-    private List<RecipeModel> models = new ArrayList<>();
+    private ArrayList<RecipeModel> models = new ArrayList<>();
     private DatabaseReference root;
 
     @Override
@@ -53,27 +53,46 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
-                    models = Arrays.asList(gson.fromJson(String.valueOf(
-                            (dataSnapshot.getChildren().iterator().next()).getValue()), RecipeModel[].class));
+                    models = new ArrayList<>(Arrays.asList(gson.fromJson(String.valueOf(
+                            (dataSnapshot.getChildren().iterator().next()).getValue()), RecipeModel[].class)));
                     Set<String> points = new TreeSet<>();
                     for (RecipeModel recipe : models) {
                         try {
                             if ("times".equals(howLoad)) {
-                                points.add(recipe.getTime());
+                                if (!recipe.getTime().equals(""))
+                                    points.add(recipe.getTime());
                             } else if ("category".equals(howLoad)) {
-                                points.add(recipe.getFoodCategory());
+                                if (!recipe.getFoodCategory().equals(""))
+                                    for (int i = 0; i < recipe.getFoodCategory().length; i++) {
+                                        points.add(recipe.getFoodCategory()[i]);
+                                    }
                             } else if ("brands".equals(howLoad)) {
-                                points.add(recipe.getBrand());
+                                if (!recipe.getBrand().equals(""))
+                                    points.add(recipe.getBrand());
                             }
-                        }catch (Exception e){}
+                        } catch (Exception e) {
+                        }
                     }
+                    final ArrayList<String> tempPoint = new ArrayList<>(points);
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ListActivity.this,
-                            android.R.layout.simple_list_item_1, new ArrayList<>(points));
+                            android.R.layout.simple_list_item_1, tempPoint);
                     listView.setAdapter(arrayAdapter);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            startActivity(new Intent(ListActivity.this,RecipeActivity.class).putExtra("recipe",models.get(position)));
+                            if ("times".equals(howLoad)) {
+                                startActivity(new Intent(ListActivity.this, RecipeisActivity.class)
+                                        .putExtra("what","times")
+                                        .putExtra("param", tempPoint.get(position)).putExtra("data",models));
+                            } else if ("category".equals(howLoad)) {
+                                startActivity(new Intent(ListActivity.this, RecipeisActivity.class)
+                                        .putExtra("what","category")
+                                        .putExtra("param", tempPoint.get(position)).putExtra("data",models));
+                            } else if ("brands".equals(howLoad)) {
+                                startActivity(new Intent(ListActivity.this, RecipeisActivity.class)
+                                        .putExtra("what","brands")
+                                        .putExtra("param", tempPoint.get(position)).putExtra("data",models));
+                            }
                         }
                     });
                 } catch (java.util.NoSuchElementException e) {

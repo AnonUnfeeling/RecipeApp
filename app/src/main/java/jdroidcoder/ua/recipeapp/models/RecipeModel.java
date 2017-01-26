@@ -8,13 +8,15 @@ import java.io.Serializable;
 
 public class RecipeModel implements Serializable{
     private static final Long serialVersionUID =1l;
+    private String name;
     private String code;
     private String brand;
-    private String foodCategory;
+    private String[] foodCategory;
     private String time;
     private String food;
-    private String ingredients;
-    private String methods;
+    private String[] ingredients;
+    private String[] methods;
+    private String image;
 
     public RecipeModel() {
     }
@@ -35,11 +37,11 @@ public class RecipeModel implements Serializable{
         this.brand = brand;
     }
 
-    public String getFoodCategory() {
+    public String[] getFoodCategory() {
         return foodCategory;
     }
 
-    public void setFoodCategory(String foodCategory) {
+    public void setFoodCategory(String[] foodCategory) {
         this.foodCategory = foodCategory;
     }
 
@@ -59,20 +61,36 @@ public class RecipeModel implements Serializable{
         this.food = food;
     }
 
-    public String getIngredients() {
+    public String[] getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
 
-    public String getMethods() {
+    public String[] getMethods() {
         return methods;
     }
 
-    public void setMethods(String methods) {
+    public void setMethods(String[] methods) {
         this.methods = methods;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

@@ -9,6 +9,20 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="loadImage"
+            android:layout_margin="@dimen/listview_margin"
+            android:id="@+id/imageView"/>
+
+        <TextView
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/listview_margin"
+            android:hint="Enter brand"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/brandEditText"

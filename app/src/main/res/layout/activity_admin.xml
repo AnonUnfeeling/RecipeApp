@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#defaff"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#defaff">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/listview_margin"
+            android:background="@drawable/ic_file_download_black_24dp"
+            android:onClick="loadImage" />
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/listview_margin"
+            android:hint="Name" />
 
         <EditText
             android:id="@+id/brandEditText"
@@ -17,12 +32,41 @@
             android:layout_margin="@dimen/listview_margin"
             android:hint="Brand" />
 
-        <EditText
-            android:id="@+id/foodCategoryEditText"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:hint="Food category" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/foodCategoryEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/listview_margin"
+                    android:layout_weight="1"
+                    android:hint="Food category" />
+
+
+                <ImageView
+                    android:id="@+id/addCategoryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:drawable/ic_menu_add"
+                    android:onClick="addCategory" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addCategoryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/timeEditText"
@@ -38,25 +82,73 @@
             android:layout_margin="@dimen/listview_margin"
             android:hint="Food" />
 
-        <EditText
-            android:id="@+id/ingredientsEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:gravity="top"
-            android:hint="Ingredients"
-            android:inputType="textMultiLine"
-            android:minLines="5" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/methodsEditText"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ingredientsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/listview_margin"
+                    android:layout_weight="1"
+                    android:hint="Ingredients" />
+
+                <ImageView
+                    android:id="@+id/addIngredientsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:drawable/ic_menu_add"
+                    android:onClick="addIngredient" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addIngredientsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:gravity="top"
-            android:hint="Methods"
-            android:inputType="textMultiLine"
-            android:minLines="5" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/methodsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/listview_margin"
+                    android:layout_weight="1"
+                    android:hint="Methods" />
+
+                <ImageView
+                    android:id="@+id/addMethodButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:drawable/ic_menu_add"
+                    android:onClick="addMethod" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addMethodsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
