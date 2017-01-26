@@ -80,14 +80,6 @@ public class RecipeActivity extends AppCompatActivity {
         } catch (Exception e) {
             time.setVisibility(View.GONE);
         }
-        TextView food = (TextView) findViewById(R.id.foodEditText);
-        try {
-            if (!recipeModel.getFood().equals(""))
-                food.setText(recipeModel.getFood());
-            else throw new Exception();
-        } catch (Exception e) {
-            food.setVisibility(View.GONE);
-        }
         TextView ingrs = (TextView) findViewById(R.id.ingredientsEditText);
         try {
             if (recipeModel.getIngredients().length != 0) {

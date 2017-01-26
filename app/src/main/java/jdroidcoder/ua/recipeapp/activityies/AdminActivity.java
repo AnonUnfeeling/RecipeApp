@@ -81,7 +81,7 @@ public class AdminActivity extends AppCompatActivity {
         try {
             recipeModel = (RecipeModel) getIntent().getSerializableExtra("recipe");
             if (!recipeModel.getBrand().equals("") || !recipeModel.getFoodCategory().equals("") ||
-                    !recipeModel.getTime().equals("") || !recipeModel.getFood().equals("") ||
+                    !recipeModel.getTime().equals("") ||
                     !recipeModel.getIngredients().equals("") ||
                     !recipeModel.getMethods().equals("")) {
                 isEdit = true;
@@ -115,11 +115,7 @@ public class AdminActivity extends AppCompatActivity {
                     time.setText(recipeModel.getTime());
                 } catch (Exception e) {
                 }
-                EditText food = (EditText) findViewById(R.id.foodEditText);
-                try {
-                    food.setText(recipeModel.getFood());
-                } catch (Exception e) {
-                }
+
                 EditText ingrs = (EditText) findViewById(R.id.ingredientsEditText);
                 try {
                     String[] ings = recipeModel.getIngredients();
@@ -235,7 +231,6 @@ public class AdminActivity extends AppCompatActivity {
         recipeModel.setBrand(((EditText) findViewById(R.id.brandEditText)).getText().toString());
         recipeModel.setFoodCategory(categoies);
         recipeModel.setTime(((EditText) findViewById(R.id.timeEditText)).getText().toString());
-        recipeModel.setFood(((EditText) findViewById(R.id.foodEditText)).getText().toString());
         recipeModel.setIngredients(ingrs);
         recipeModel.setMethods(methods);
         recipeModel.setCode(UUID.randomUUID().toString());

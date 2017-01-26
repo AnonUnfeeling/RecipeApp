@@ -13,7 +13,6 @@ public class RecipeModel implements Serializable{
     private String brand;
     private String[] foodCategory;
     private String time;
-    private String food;
     private String[] ingredients;
     private String[] methods;
     private String image;
@@ -51,14 +50,6 @@ public class RecipeModel implements Serializable{
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public String getFood() {
-        return food;
-    }
-
-    public void setFood(String food) {
-        this.food = food;
     }
 
     public String[] getIngredients() {
@@ -99,7 +90,6 @@ public class RecipeModel implements Serializable{
                 "brand='" + brand + '\'' +
                 ", foodCategory='" + foodCategory + '\'' +
                 ", time='" + time + '\'' +
-                ", food='" + food + '\'' +
                 ", ingredients='" + ingredients + '\'' +
                 ", methods='" + methods + '\'' +
                 '}';
