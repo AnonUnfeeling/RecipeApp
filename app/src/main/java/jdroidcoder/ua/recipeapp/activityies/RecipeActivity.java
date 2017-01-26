@@ -59,8 +59,13 @@ public class RecipeActivity extends AppCompatActivity {
             if (!recipeModel.getFoodCategory().equals("")) {
                 String cat = "";
                 for (int i = 0; i < recipeModel.getFoodCategory().length; i++) {
-                    if (!recipeModel.getFoodCategory()[i].equals(""))
-                        cat += (i + 1) + ". " + recipeModel.getFoodCategory()[i] + "\n";
+                    if (i != recipeModel.getFoodCategory().length - 1) {
+                        if (!recipeModel.getFoodCategory()[i].equals(""))
+                            cat += (i + 1) + ". " + recipeModel.getFoodCategory()[i] + "\n";
+                    } else {
+                        if (!recipeModel.getFoodCategory()[i].equals(""))
+                            cat += (i + 1) + ". " + recipeModel.getFoodCategory()[i];
+                    }
                 }
                 foodCategory.setText(cat);
             } else throw new Exception();
@@ -88,8 +93,13 @@ public class RecipeActivity extends AppCompatActivity {
             if (recipeModel.getIngredients().length != 0) {
                 String ings = "";
                 for (int i = 0; i < recipeModel.getIngredients().length; i++) {
-                    if (!recipeModel.getIngredients()[i].equals(""))
-                        ings += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
+                    if (i < recipeModel.getIngredients().length - 1) {
+                        if (!recipeModel.getIngredients()[i].equals(""))
+                            ings += (i + 1) + ". " + recipeModel.getIngredients()[i] + "\n";
+                    } else {
+                        if (!recipeModel.getIngredients()[i].equals(""))
+                            ings += (i + 1) + ". " + recipeModel.getIngredients()[i];
+                    }
                 }
                 ingrs.setText(ings);
             } else throw new Exception();
@@ -102,8 +112,11 @@ public class RecipeActivity extends AppCompatActivity {
             if (recipeModel.getMethods().length != 0) {
                 String mtds = "";
                 for (int i = 0; i < recipeModel.getMethods().length; i++) {
-                    if (!recipeModel.getMethods()[i].equals(""))
-                        mtds += (i + 1) + ". " + recipeModel.getMethods()[i] + "\n";
+                    if (i < recipeModel.getMethods().length - 1)
+                        if (!recipeModel.getMethods()[i].equals(""))
+                            mtds += (i + 1) + ". " + recipeModel.getMethods()[i] + "\n";
+                        else if (!recipeModel.getMethods()[i].equals(""))
+                            mtds += (i + 1) + ". " + recipeModel.getMethods()[i];
                 }
                 methods.setText(mtds);
             } else throw new Exception();

@@ -28,7 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
                 android:text="Name:"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/nameEditText"
@@ -50,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
                 android:text="Brand:"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/brandEditText"
@@ -70,8 +72,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
-                android:text="Name:"
-                android:textColor="@android:color/black" />
+                android:text="Categories:"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/foodCategoryEditText"
@@ -93,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
                 android:text="Time:"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/timeEditText"
@@ -115,7 +119,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
                 android:text="Food:"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/foodEditText"
@@ -136,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
                 android:text="Ingredients:"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/ingredientsEditText"
@@ -159,7 +165,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/listview_margin"
                 android:text="Methods:"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/methodsEditText"
