@@ -9,72 +9,168 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="loadImage"
             android:layout_margin="@dimen/listview_margin"
-            android:id="@+id/imageView"/>
+            android:onClick="loadImage" />
 
-        <TextView
-            android:id="@+id/nameEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:hint="Enter brand"
-            android:textColor="@android:color/black" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/brandEditText"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Name:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:hint="Enter name"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:hint="Enter brand"
-            android:textColor="@android:color/black" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/foodCategoryEditText"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Brand:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/brandEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:hint="Enter brand"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:hint="Food category"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/timeEditText"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Name:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/foodCategoryEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:hint="Food category"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:hint="Time"
-            android:textColor="@android:color/black" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/foodEditText"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Time:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/timeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:hint="Time"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:hint="Food"
-            android:textColor="@android:color/black" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/ingredientsEditText"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Food:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/foodEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:hint="Food"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:gravity="top"
-            android:hint="Ingredients"
-            android:inputType="textMultiLine"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/methodsEditText"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Ingredients:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/ingredientsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:gravity="top"
+                android:hint="Ingredients"
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/listview_margin"
-            android:gravity="top"
-            android:hint="Methods"
-            android:inputType="textMultiLine"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:text="Methods:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/methodsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/listview_margin"
+                android:gravity="top"
+                android:hint="Methods"
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
